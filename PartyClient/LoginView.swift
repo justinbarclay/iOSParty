@@ -8,8 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginController: UIViewController {
 
+    @IBOutlet weak var _email: UITextField!
+    
+    
+    @IBOutlet weak var _password: UITextField!
+    @IBOutlet weak var _loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +26,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func loginUser(_ sender: UIButton) {
+    }
 }
 
