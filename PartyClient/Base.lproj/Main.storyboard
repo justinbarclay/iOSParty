@@ -73,20 +73,9 @@
                                     <action selector="loginUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f1m-z7-4CJ"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Test" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BhO-we-LSU" userLabel="popup">
-                                <rect key="frame" x="-339.5" y="260" width="254" height="147"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="147" id="CpN-gy-x7n"/>
-                                    <constraint firstAttribute="width" constant="254" id="ius-T4-pHP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="BhO-we-LSU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0hR-UY-sUu"/>
                             <constraint firstItem="OEn-vB-9xJ" firstAttribute="top" secondItem="Kn1-ek-zEd" secondAttribute="bottom" constant="2" id="1uV-tY-EZr"/>
                             <constraint firstItem="OEn-vB-9xJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5m1-1x-Djj"/>
                             <constraint firstItem="Wmr-lf-fVb" firstAttribute="top" secondItem="aJf-lh-rJF" secondAttribute="bottom" constant="-2" id="C9r-tS-F0y"/>
@@ -106,7 +95,6 @@
                             <constraint firstItem="G9l-js-1ca" firstAttribute="top" secondItem="aJf-lh-rJF" secondAttribute="bottom" constant="71" id="fmf-2d-Ckg"/>
                             <constraint firstItem="Kn1-ek-zEd" firstAttribute="leading" secondItem="G9l-js-1ca" secondAttribute="leading" id="hbN-9J-Kog"/>
                             <constraint firstItem="Wmr-lf-fVb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hfw-LZ-bRr"/>
-                            <constraint firstItem="BhO-we-LSU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-400" id="i0N-Oz-S37"/>
                             <constraint firstItem="OEn-vB-9xJ" firstAttribute="leading" secondItem="G9l-js-1ca" secondAttribute="leading" id="m8Z-FR-RQJ"/>
                             <constraint firstItem="VsA-uj-Zaj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rJu-Cv-7Ev"/>
                             <constraint firstItem="9Db-FR-vjS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w6I-dy-QBf"/>
@@ -116,8 +104,6 @@
                         <outlet property="_email" destination="9Db-FR-vjS" id="ks7-cT-zTm"/>
                         <outlet property="_loginButton" destination="VsA-uj-Zaj" id="hof-9b-7qf"/>
                         <outlet property="_password" destination="OEn-vB-9xJ" id="64A-wD-lSu"/>
-                        <outlet property="constrainPopupX" destination="i0N-Oz-S37" id="NV9-jR-UIj"/>
-                        <outlet property="popupView" destination="BhO-we-LSU" id="g9d-61-qrh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
