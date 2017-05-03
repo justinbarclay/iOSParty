@@ -67,11 +67,42 @@ class LoginController: UIViewController {
         }
         
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
-            print(String(data: data!, encoding: String.Encoding.utf8))
+            guard (data != nil) else { return }
+            var token: Any
+            do {
+                token = try JSONSerialization.jsonObject(with: data!, options: [])
+            } catch {
+                return
+            }
+            
+            if let jsonResponse = token as? [String: Any] {
+                if let jwt = jsonResponse["jwt"] as? String {
+                    self.saveInKeychain(token: jwt, account: username!)
+                }
+            }
             print(response)
             print(error)
         }
         task.resume()
+    }
+    
+    func saveInKeychain(token: String, account: String){
+        // This is a new account, create a new keychain item with the account name.
+        let tokenItem = KeychainTokenItem(service: KeychainConfiguration.serviceName, account: account, accessGroup: KeychainConfiguration.accessGroup)
+        
+        // Save the password for the new item.
+        do {
+            try tokenItem.saveToken(token)
+        } catch {
+            return
+        }
+    }
+    
+    func setAlert(title: String, body: String){
+        let alert = UIAlertController(title: title, message: body, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Working!!", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
     }
     
 //    private class func save(service: NSString, data: NSString) {
