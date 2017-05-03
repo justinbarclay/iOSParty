@@ -67,21 +67,25 @@ class LoginController: UIViewController {
         }
         
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
-            guard (data != nil) else { return }
+            print(response)
+            print(error)
+            guard (data != nil) else { self.setAlert(title: "Server Error", body: "No response from server"); return }
             var token: Any
             do {
                 token = try JSONSerialization.jsonObject(with: data!, options: [])
             } catch {
+                self.setAlert(title: "Server Error", body: "No response from server")
                 return
             }
             
             if let jsonResponse = token as? [String: Any] {
                 if let jwt = jsonResponse["jwt"] as? String {
+                    print(jwt)
                     self.saveInKeychain(token: jwt, account: username!)
+                } else{
+                    self.setAlert(title: "Server Error", body: "No response from server")
                 }
             }
-            print(response)
-            print(error)
         }
         task.resume()
     }
@@ -99,9 +103,11 @@ class LoginController: UIViewController {
     }
     
     func setAlert(title: String, body: String){
-        let alert = UIAlertController(title: title, message: body, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Working!!", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+         OperationQueue.main.addOperation {
+            let alert = UIAlertController(title: title, message: body, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Exit", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
 
     }
     
