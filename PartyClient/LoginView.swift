@@ -23,8 +23,19 @@ class LoginController: UIViewController {
     let _server = "http://localhost:3000/user_token"
     
     override func viewDidLoad() {
+//        let account = "justincbarclay@gmail.com"
+//        let tokenItem = KeychainTokenItem(service: KeychainConfiguration.serviceName, account: account, accessGroup: KeychainConfiguration.accessGroup)
+//        do {
+//            let token = try tokenItem.readToken()
+//            self.setAlert(title: "JWT", body: token)
+//        } catch {
+//            return
+//        }
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,12 +49,14 @@ class LoginController: UIViewController {
         let username = _email.text
         let password = _password.text
         
+        disableInput()
         
         // Dict for easy JSONilization
         var loginInfo = [String: String]()
         var container = [String: Any]()
         // Ensure information has been entered before progressing
         if(username == "" || password == ""){
+            enableInput()
             return
         }
         
@@ -62,6 +75,7 @@ class LoginController: UIViewController {
         do{
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: container, options: [])
         } catch {
+            enableInput()
             print("JSON Error")
             return
         }
@@ -69,12 +83,13 @@ class LoginController: UIViewController {
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             print(response)
             print(error)
+            self.enableInput()
             guard (data != nil) else { self.setAlert(title: "Server Error", body: "No response from server"); return }
             var token: Any
             do {
                 token = try JSONSerialization.jsonObject(with: data!, options: [])
             } catch {
-                self.setAlert(title: "Server Error", body: "No response from server")
+                self.setAlert(title: "Login failed", body: "Username and password do not match")
                 return
             }
             
@@ -87,6 +102,7 @@ class LoginController: UIViewController {
                 }
             }
         }
+        enableInput()
         task.resume()
     }
     
@@ -102,6 +118,17 @@ class LoginController: UIViewController {
         }
     }
     
+    func disableInput(){
+        _email.isEnabled = false
+        _password.isEnabled = false
+        _loginButton.isEnabled = false
+    }
+
+    func enableInput(){
+        _email.isEnabled = true
+        _password.isEnabled = true
+        _loginButton.isEnabled = true   
+    }
     func setAlert(title: String, body: String){
          OperationQueue.main.addOperation {
             let alert = UIAlertController(title: title, message: body, preferredStyle: UIAlertControllerStyle.alert)
