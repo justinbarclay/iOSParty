@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D02956631EBAC6A200DC2E51 /* ScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02956621EBAC6A200DC2E51 /* ScannerController.swift */; };
 		D09D00011EB71AF80090EF4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D09DFFFF1EB71AF80090EF4F /* LaunchScreen.storyboard */; };
 		D09D000C1EB71AF80090EF4F /* PartyClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09D000B1EB71AF80090EF4F /* PartyClientUITests.swift */; };
 		D09D00161EB725880090EF4F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09DFFF81EB71AF80090EF4F /* LoginView.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D02956621EBAC6A200DC2E51 /* ScannerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerController.swift; sourceTree = "<group>"; };
 		D09D00001EB71AF80090EF4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D09D00021EB71AF80090EF4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D09D00071EB71AF80090EF4F /* PartyClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PartyClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 				D09D00191EB9BD0F0090EF4F /* KeychainTokenItem.swift */,
 				D09DFFF61EB71AF80090EF4F /* AppDelegate.swift */,
 				D09DFFF81EB71AF80090EF4F /* LoginView.swift */,
+				D02956621EBAC6A200DC2E51 /* ScannerController.swift */,
 				D09DFFFA1EB71AF80090EF4F /* Main.storyboard */,
 				D09DFFFD1EB71AF80090EF4F /* Assets.xcassets */,
 				D09DFFFF1EB71AF80090EF4F /* LaunchScreen.storyboard */,
@@ -157,6 +160,8 @@
 					};
 					D09DFFF21EB71AF80090EF4F = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = DE627YL53C;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -215,6 +220,7 @@
 			files = (
 				D09D00161EB725880090EF4F /* LoginView.swift in Sources */,
 				D09D00181EB9AE1B0090EF4F /* KeychainConfiuration.swift in Sources */,
+				D02956631EBAC6A200DC2E51 /* ScannerController.swift in Sources */,
 				D09DFFF71EB71AF80090EF4F /* AppDelegate.swift in Sources */,
 				D09D001A1EB9BD0F0090EF4F /* KeychainTokenItem.swift in Sources */,
 			);
@@ -347,10 +353,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = DE627YL53C;
 				INFOPLIST_FILE = PartyClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Surreality.PartyClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -359,6 +368,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = DE627YL53C;
 				INFOPLIST_FILE = PartyClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Surreality.PartyClient;
