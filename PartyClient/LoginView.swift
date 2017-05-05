@@ -18,34 +18,24 @@ class LoginController: UIViewController {
     @IBOutlet weak var _password: UITextField!
     @IBOutlet weak var _loginButton: UIButton!
     
-    let _testServer = "http://localhost:61222"
+    let _testServer = "http://partyserver.192.168.0.14.xip.io/user_token"
 //    let _server = "http://partyserver.dev/user_token"
     let _server = "http://localhost:3000/user_token"
     
     override func viewDidLoad() {
-//        let account = "justincbarclay@gmail.com"
-//        let tokenItem = KeychainTokenItem(service: KeychainConfiguration.serviceName, account: account, accessGroup: KeychainConfiguration.accessGroup)
-//        do {
-//            let token = try tokenItem.readToken()
-//            self.setAlert(title: "JWT", body: token)
-//        } catch {
-//            return
-//        }
-        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
-    }
 
+        //performSegue(withIdentifier: "loginToScanner" , sender: self)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     @IBAction func loginUser(_ sender: UIButton) {
-        let url = URL(string: _server)
-//        let url = URL(string: _testServer)
+//        let url = URL(string: _server)
+        let url = URL(string: _testServer)
         let username = _email.text
         let password = _password.text
         
@@ -100,6 +90,7 @@ class LoginController: UIViewController {
                 } else{
                     self.setAlert(title: "Server Error", body: "No response from server")
                 }
+                return
             }
         }
         enableInput()

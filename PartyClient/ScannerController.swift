@@ -15,7 +15,6 @@ class ScannerController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
     var qrCodeFrameView: UIView?
 
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var topbar: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -45,8 +44,6 @@ class ScannerController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
             
             // Move the message label and top bar to the front
             view.bringSubview(toFront: messageLabel)
-            view.bringSubview(toFront: topbar)
-            
             
             // Add green box/highlight the QR code
             qrCodeFrameView = UIView()

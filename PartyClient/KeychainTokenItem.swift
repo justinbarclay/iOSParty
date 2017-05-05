@@ -129,38 +129,37 @@ struct KeychainTokenItem {
         return query
     }
     
-    //    static func passwordItems(forService service: String, accessGroup: String? = nil) throws -> [KeychainPasswordItem] {
-    //        // Build a query for all items that match the service and access group.
-    //        var query = KeychainPasswordItem.keychainQuery(withService: service, accessGroup: accessGroup)
-    //        query[kSecMatchLimit as String] = kSecMatchLimitAll
-    //        query[kSecReturnAttributes as String] = kCFBooleanTrue
-    //        query[kSecReturnData as String] = kCFBooleanFalse
-    //
-    //        // Fetch matching items from the keychain.
-    //        var queryResult: AnyObject?
-    //        let status = withUnsafeMutablePointer(to: &queryResult) {
-    //            SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
-    //        }
-    //
-    //        // If no items were found, return an empty array.
-    //        guard status != errSecItemNotFound else { return [] }
-    //
-    //        // Throw an error if an unexpected status was returned.
-    //        guard status == noErr else { throw KeychainError.unhandledError(status: status) }
-    //
-    //        // Cast the query result to an array of dictionaries.
-    //        guard let resultData = queryResult as? [[String : AnyObject]] else { throw KeychainError.unexpectedItemData }
-    //
-    //        // Create a `KeychainPasswordItem` for each dictionary in the query result.
-    //        var passwordItems = [KeychainPasswordItem]()
-    //        for result in resultData {
-    //            guard let account  = result[kSecAttrAccount as String] as? String else { throw KeychainError.unexpectedItemData }
-    //
-    //            let passwordItem = KeychainPasswordItem(service: service, account: account, accessGroup: accessGroup)
-    //            passwordItems.append(passwordItem)
-    //        }
-    //        
-    //        return passwordItems
-    //    }
+    static func tokenItems(forService service: String, accessGroup: String? = nil) throws -> [KeychainTokenItem] {
+        // Build a query for all items that match the service and access group.
+        var query = KeychainTokenItem.keychainQuery(withService: service, accessGroup: accessGroup)
+        query[kSecMatchLimit as String] = kSecMatchLimitAll
+        query[kSecReturnAttributes as String] = kCFBooleanTrue
+        query[kSecReturnData as String] = kCFBooleanFalse
+    
+        // Fetch matching items from the keychain.
+        var queryResult: AnyObject?
+        let status = withUnsafeMutablePointer(to: &queryResult) {
+            SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
+        }
+        // If no items were found, return an empty array.
+        guard status != errSecItemNotFound else { return [] }
+    
+        // Throw an error if an unexpected status was returned.
+        guard status == noErr else { throw KeychainError.unhandledError(status: status) }
 
+        // Cast the query result to an array of dictionaries.
+        guard let resultData = queryResult as? [[String : AnyObject]] else { throw KeychainError.unexpectedItemData }
+    
+        // Create a `KeychainPasswordItem` for each dictionary in the query result.
+        var tokenItems = [KeychainTokenItem]()
+        for result in resultData {
+            guard let account  = result[kSecAttrAccount as String] as? String else { throw KeychainError.unexpectedItemData }
+            print(account)
+            let tokenItem = KeychainTokenItem(service: service, account: account, accessGroup: accessGroup)
+            print(tokenItem)
+            tokenItems.append(tokenItem)
+        }
+            
+        return tokenItems
+        }
 }

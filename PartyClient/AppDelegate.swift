@@ -15,7 +15,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        var loggedIn = false
         // Override point for customization after application launch.
+        do {
+            loggedIn = try KeychainTokenItem.tokenItems(forService: KeychainConfiguration.serviceName).count > 0
+        } catch {
+            return true
+        }
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        if loggedIn{
+            let ScannerController: ScannerController = storyboard.instantiateViewController(withIdentifier: "ScannerController") as! ScannerController
+            self.window?.makeKeyAndVisible()
+            self.window?.rootViewController = ScannerController
+        } else {
+            let LoginController: LoginController = storyboard.instantiateViewController(withIdentifier: "LoginController") as! LoginController
+            self.window?.makeKeyAndVisible()
+            self.window?.rootViewController = LoginController
+        }
+//        if userLoggedIn {
+//
+//            let tabBarController: UITabBarController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+//            self.window?.makeKeyAndVisible()
+//            self.window?.rootViewController = tabBarController
+//        } else {
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+//            let logInViewController: LogInViewController = storyboard.instantiateViewControllerWithIdentifier("LogInViewController") as! LogInViewController
+//            self.window?.makeKeyAndVisible()
+//            self.window?.rootViewController = logInViewController
+//        }
         return true
     }
 
