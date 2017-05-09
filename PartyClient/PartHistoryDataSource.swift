@@ -24,10 +24,10 @@ extension PartHistoryDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PartHistoryCell())) as! PartHistoryCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PartHistoryCell.self)) as! PartHistoryCell
         let partHistory = partsHistory[indexPath.row]
         cell.user = partHistory.user
-        cell.info = partHistory.date.description + "\t\t" + partHistory.netChange.description
+        cell.info = String(describing: partHistory.date) + "\t\t" + partHistory.netChange.description
         return cell
     }
 }
