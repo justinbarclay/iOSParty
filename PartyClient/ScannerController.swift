@@ -13,7 +13,7 @@ class ScannerController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
-
+    var productID: String?
     @IBOutlet weak var messageLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,13 +82,20 @@ class ScannerController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
             // If the found metadata is equal to the QR code
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
-            
             if metadataObj.stringValue != nil {
                 messageLabel.text = metadataObj.stringValue
+                performSegue(withIdentifier: "segueToProductDetails" , sender: self)
             }
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToProductDetails" {
+            if let destination = segue.destination as? PartDetailController {
+                destination.productID = self.productID
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
