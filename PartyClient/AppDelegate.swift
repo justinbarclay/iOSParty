@@ -32,17 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.makeKeyAndVisible()
             self.window?.rootViewController = LoginController
         }
-//        if userLoggedIn {
-//
-//            let tabBarController: UITabBarController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
-//            self.window?.makeKeyAndVisible()
-//            self.window?.rootViewController = tabBarController
-//        } else {
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-//            let logInViewController: LogInViewController = storyboard.instantiateViewControllerWithIdentifier("LogInViewController") as! LogInViewController
-//            self.window?.makeKeyAndVisible()
-//            self.window?.rootViewController = logInViewController
-//        }
         return true
     }
 

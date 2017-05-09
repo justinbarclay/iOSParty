@@ -71,10 +71,12 @@ class LoginController: UIViewController {
         }
         
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
-            print(response)
-            print(error)
             self.enableInput()
-            guard (data != nil) else { self.setAlert(title: "Server Error", body: "No response from server"); return }
+            
+            guard (data != nil) else {
+                self.setAlert(title: "Server Error", body: "No response from server")
+                return
+            }
             var token: Any
             do {
                 token = try JSONSerialization.jsonObject(with: data!, options: [])
