@@ -245,16 +245,6 @@
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9zy-kI-30a">
-                                <rect key="frame" x="256" y="324" width="98" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="98" id="LPv-NL-3wW"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="-"/>
-                                    <segment title="+"/>
-                                </segments>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eft-E9-VDb">
                                 <rect key="frame" x="165" y="604" width="45" height="33"/>
                                 <constraints>
@@ -268,7 +258,7 @@
                                 <rect key="frame" x="0.0" y="379" width="375" height="205"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PartHistory" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="doQ-a8-0ps" detailTextLabel="adX-vE-lBm" style="IBUITableViewCellStyleSubtitle" id="Jkn-Wl-Kyu" customClass="PartHistoryCell" customModule="PartyClient" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PartHistoryCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PartHistoryCell" textLabel="doQ-a8-0ps" detailTextLabel="adX-vE-lBm" style="IBUITableViewCellStyleSubtitle" id="Jkn-Wl-Kyu" customClass="PartHistoryCell" customModule="PartyClient" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jkn-Wl-Kyu" id="oUb-Tn-5kB">
@@ -299,10 +289,19 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xhc-ih-2yS">
+                                <rect key="frame" x="265" y="323" width="94" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="BgS-z4-llN"/>
+                                    <constraint firstAttribute="height" constant="29" id="t66-fA-YK6"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="stepperDidChange:" destination="vRO-em-Vjs" eventType="valueChanged" id="LSK-Qm-WlL"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9zy-kI-30a" firstAttribute="top" secondItem="rj9-3i-5lI" secondAttribute="bottom" constant="6" id="094-AV-zhg"/>
                             <constraint firstItem="eft-E9-VDb" firstAttribute="centerX" secondItem="huY-Lm-e8T" secondAttribute="centerX" id="0yB-nf-ibz"/>
                             <constraint firstItem="Isv-OF-sfX" firstAttribute="leading" secondItem="huY-Lm-e8T" secondAttribute="leading" id="1oV-uR-f5X"/>
                             <constraint firstItem="UpU-bM-vn2" firstAttribute="leading" secondItem="huY-Lm-e8T" secondAttribute="leadingMargin" id="7Eu-GF-4i3"/>
@@ -311,13 +310,13 @@
                             <constraint firstItem="EEV-NM-XGh" firstAttribute="top" secondItem="cQ2-xj-0ys" secondAttribute="bottom" constant="5" id="8PK-U5-qjr"/>
                             <constraint firstItem="UpU-bM-vn2" firstAttribute="top" secondItem="rj9-3i-5lI" secondAttribute="bottom" constant="9" id="AXp-YV-URZ"/>
                             <constraint firstItem="bsT-Ue-qBj" firstAttribute="leading" secondItem="huY-Lm-e8T" secondAttribute="leadingMargin" id="AaM-J0-7bt"/>
-                            <constraint firstItem="9zy-kI-30a" firstAttribute="leading" secondItem="Scy-zJ-hhz" secondAttribute="trailing" constant="85" id="D0W-Kk-Rad"/>
                             <constraint firstItem="JSc-Ox-2S2" firstAttribute="centerX" secondItem="huY-Lm-e8T" secondAttribute="centerX" id="D86-e6-LoJ"/>
                             <constraint firstItem="JSc-Ox-2S2" firstAttribute="top" secondItem="EHr-hg-aKr" secondAttribute="bottom" constant="7" id="DaQ-G7-sWh"/>
                             <constraint firstItem="JSc-Ox-2S2" firstAttribute="centerX" secondItem="Isv-OF-sfX" secondAttribute="centerX" id="Dr8-c5-o2W"/>
                             <constraint firstItem="bsT-Ue-qBj" firstAttribute="baseline" secondItem="EEV-NM-XGh" secondAttribute="baseline" id="HO2-RQ-gSt"/>
                             <constraint firstAttribute="trailing" secondItem="rj9-3i-5lI" secondAttribute="trailing" constant="10" id="Iur-SW-rua"/>
                             <constraint firstItem="Scy-zJ-hhz" firstAttribute="leading" secondItem="UpU-bM-vn2" secondAttribute="trailing" constant="4" id="IzY-EK-SqF"/>
+                            <constraint firstItem="xhc-ih-2yS" firstAttribute="leading" secondItem="Scy-zJ-hhz" secondAttribute="trailing" constant="94" id="NaS-am-Er1"/>
                             <constraint firstItem="oiS-ik-xG4" firstAttribute="top" secondItem="EEV-NM-XGh" secondAttribute="bottom" constant="11" id="OTa-N4-auG"/>
                             <constraint firstItem="oiS-ik-xG4" firstAttribute="centerX" secondItem="huY-Lm-e8T" secondAttribute="centerX" id="QOx-r6-zYM"/>
                             <constraint firstItem="EHr-hg-aKr" firstAttribute="top" secondItem="rr9-ge-jsK" secondAttribute="bottom" id="RIq-4e-vnn"/>
@@ -331,9 +330,9 @@
                             <constraint firstItem="rj9-3i-5lI" firstAttribute="top" secondItem="oiS-ik-xG4" secondAttribute="bottom" constant="12" id="Xns-kf-yHO"/>
                             <constraint firstItem="rj9-3i-5lI" firstAttribute="centerX" secondItem="Isv-OF-sfX" secondAttribute="centerX" id="ahB-e6-mdk"/>
                             <constraint firstItem="EEV-NM-XGh" firstAttribute="centerX" secondItem="Isv-OF-sfX" secondAttribute="centerX" id="arz-6m-iEv"/>
-                            <constraint firstItem="9zy-kI-30a" firstAttribute="centerY" secondItem="Scy-zJ-hhz" secondAttribute="centerY" id="baT-Yt-sfs"/>
                             <constraint firstItem="bsT-Ue-qBj" firstAttribute="top" secondItem="cQ2-xj-0ys" secondAttribute="bottom" constant="3" id="f2D-LN-P0m"/>
                             <constraint firstItem="UpU-bM-vn2" firstAttribute="centerY" secondItem="Scy-zJ-hhz" secondAttribute="centerY" id="kwF-Ud-kp9"/>
+                            <constraint firstItem="xhc-ih-2yS" firstAttribute="top" secondItem="rj9-3i-5lI" secondAttribute="bottom" constant="5" id="lNE-8M-ARn"/>
                             <constraint firstItem="LeE-qH-jC3" firstAttribute="top" secondItem="eft-E9-VDb" secondAttribute="bottom" constant="30" id="pUh-Cx-n1d"/>
                             <constraint firstItem="Scy-zJ-hhz" firstAttribute="top" secondItem="rj9-3i-5lI" secondAttribute="bottom" constant="5" id="qXn-g5-Tio"/>
                             <constraint firstItem="cQ2-xj-0ys" firstAttribute="top" secondItem="JSc-Ox-2S2" secondAttribute="bottom" constant="10" id="rbD-Rv-Qvp"/>
@@ -345,6 +344,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="UJt-ke-xZW"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="Stepper" destination="xhc-ih-2yS" id="EHL-xB-MxP"/>
                         <outlet property="count" destination="Scy-zJ-hhz" id="rbm-fn-9yZ"/>
                         <outlet property="partHistoryTable" destination="Isv-OF-sfX" id="FWD-Pi-4EU"/>
                         <outlet property="productName" destination="EHr-hg-aKr" id="F1N-S6-NZr"/>

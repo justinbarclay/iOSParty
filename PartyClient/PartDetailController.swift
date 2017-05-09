@@ -18,7 +18,7 @@ struct Part{
     let name: String
     let room: String
     let shelf: String
-    let count: Int
+    var count: Int
     let history: [PartHistory]
     
 }
@@ -26,7 +26,7 @@ struct Part{
 class PartDetailController: UIViewController {
     var productID: String?
     let dataSource: PartHistoryDataSource
-    let part: Part
+    var part: Part
     
     
     @IBOutlet weak var partHistoryTable: UITableView!
@@ -35,6 +35,8 @@ class PartDetailController: UIViewController {
     @IBOutlet weak var count: UITextField!
     
     @IBOutlet weak var room: UILabel!
+    @IBOutlet weak var Stepper: UIStepper!
+
     required init?(coder aDecoder: NSCoder){
         let history = [
             PartHistory(user: "Justin", date: Date.init(), netChange: -10),
@@ -44,6 +46,8 @@ class PartDetailController: UIViewController {
         part = Part(name: "Gasket", room: "Mechanical Storage Room", shelf: "A3", count: 20, history: history)
         
         self.dataSource = PartHistoryDataSource(partsHistory: part.history)
+        
+       
         super.init(coder: aDecoder)
     }
     
@@ -54,7 +58,9 @@ class PartDetailController: UIViewController {
         partHistoryTable.dataSource = dataSource
         partHistoryTable.reloadData()
 
+        Stepper.maximumValue = 1000000000
         // Set up
+        Stepper.value = Double(part.count)
         productName.text = part.name
         shelf.text = part.shelf
         room.text = part.room
@@ -62,7 +68,13 @@ class PartDetailController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func stepperDidChange(_ sender: UIStepper) {
+        print("test")
+        part.count = Int(sender.value)
+        count.text = String(part.count)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
