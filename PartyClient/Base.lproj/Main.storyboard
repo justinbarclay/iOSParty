@@ -158,16 +158,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drive Shaft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHr-hg-aKr">
-                                <rect key="frame" x="130" y="0.0" width="116" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="116" id="eZm-pR-DIm"/>
-                                    <constraint firstAttribute="height" constant="37" id="hml-gV-MbC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSc-Ox-2S2">
                                 <rect key="frame" x="150" y="44" width="75" height="35"/>
                                 <constraints>
@@ -299,6 +289,22 @@
                                     <action selector="stepperDidChange:" destination="vRO-em-Vjs" eventType="valueChanged" id="LSK-Qm-WlL"/>
                                 </connections>
                             </stepper>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="stf-cS-CCT">
+                                <rect key="frame" x="1" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="DnJ-mV-ruT"/>
+                                    <constraint firstAttribute="height" constant="44" id="FIy-SY-lIB"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="SbY-q4-dl8">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Kwj-c3-uiq">
+                                            <connections>
+                                                <action selector="back:" destination="vRO-em-Vjs" id="oTd-ob-RNE"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -311,7 +317,6 @@
                             <constraint firstItem="UpU-bM-vn2" firstAttribute="top" secondItem="rj9-3i-5lI" secondAttribute="bottom" constant="9" id="AXp-YV-URZ"/>
                             <constraint firstItem="bsT-Ue-qBj" firstAttribute="leading" secondItem="huY-Lm-e8T" secondAttribute="leadingMargin" id="AaM-J0-7bt"/>
                             <constraint firstItem="JSc-Ox-2S2" firstAttribute="centerX" secondItem="huY-Lm-e8T" secondAttribute="centerX" id="D86-e6-LoJ"/>
-                            <constraint firstItem="JSc-Ox-2S2" firstAttribute="top" secondItem="EHr-hg-aKr" secondAttribute="bottom" constant="7" id="DaQ-G7-sWh"/>
                             <constraint firstItem="JSc-Ox-2S2" firstAttribute="centerX" secondItem="Isv-OF-sfX" secondAttribute="centerX" id="Dr8-c5-o2W"/>
                             <constraint firstItem="bsT-Ue-qBj" firstAttribute="baseline" secondItem="EEV-NM-XGh" secondAttribute="baseline" id="HO2-RQ-gSt"/>
                             <constraint firstAttribute="trailing" secondItem="rj9-3i-5lI" secondAttribute="trailing" constant="10" id="Iur-SW-rua"/>
@@ -319,12 +324,11 @@
                             <constraint firstItem="xhc-ih-2yS" firstAttribute="leading" secondItem="Scy-zJ-hhz" secondAttribute="trailing" constant="94" id="NaS-am-Er1"/>
                             <constraint firstItem="oiS-ik-xG4" firstAttribute="top" secondItem="EEV-NM-XGh" secondAttribute="bottom" constant="11" id="OTa-N4-auG"/>
                             <constraint firstItem="oiS-ik-xG4" firstAttribute="centerX" secondItem="huY-Lm-e8T" secondAttribute="centerX" id="QOx-r6-zYM"/>
-                            <constraint firstItem="EHr-hg-aKr" firstAttribute="top" secondItem="rr9-ge-jsK" secondAttribute="bottom" id="RIq-4e-vnn"/>
                             <constraint firstItem="Isv-OF-sfX" firstAttribute="top" secondItem="Scy-zJ-hhz" secondAttribute="bottom" constant="26" id="Rr5-QW-yzB"/>
                             <constraint firstItem="oiS-ik-xG4" firstAttribute="top" secondItem="JSc-Ox-2S2" secondAttribute="bottom" constant="70" id="SeQ-fP-WN5"/>
+                            <constraint firstItem="stf-cS-CCT" firstAttribute="top" secondItem="rr9-ge-jsK" secondAttribute="bottom" id="TBc-ZQ-LYU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EEV-NM-XGh" secondAttribute="trailing" constant="71" id="TU1-o4-pT7"/>
                             <constraint firstItem="Scy-zJ-hhz" firstAttribute="leading" secondItem="EEV-NM-XGh" secondAttribute="leading" id="UF7-Gf-1nl"/>
-                            <constraint firstItem="EHr-hg-aKr" firstAttribute="centerX" secondItem="huY-Lm-e8T" secondAttribute="centerX" id="VMv-Az-oIl"/>
                             <constraint firstItem="Scy-zJ-hhz" firstAttribute="top" secondItem="rj9-3i-5lI" secondAttribute="bottom" constant="5" id="Vw4-c9-56K"/>
                             <constraint firstItem="cQ2-xj-0ys" firstAttribute="leading" secondItem="huY-Lm-e8T" secondAttribute="leadingMargin" id="WIZ-gi-YuY"/>
                             <constraint firstItem="rj9-3i-5lI" firstAttribute="top" secondItem="oiS-ik-xG4" secondAttribute="bottom" constant="12" id="Xns-kf-yHO"/>
@@ -333,6 +337,7 @@
                             <constraint firstItem="bsT-Ue-qBj" firstAttribute="top" secondItem="cQ2-xj-0ys" secondAttribute="bottom" constant="3" id="f2D-LN-P0m"/>
                             <constraint firstItem="UpU-bM-vn2" firstAttribute="centerY" secondItem="Scy-zJ-hhz" secondAttribute="centerY" id="kwF-Ud-kp9"/>
                             <constraint firstItem="xhc-ih-2yS" firstAttribute="top" secondItem="rj9-3i-5lI" secondAttribute="bottom" constant="5" id="lNE-8M-ARn"/>
+                            <constraint firstItem="JSc-Ox-2S2" firstAttribute="top" secondItem="stf-cS-CCT" secondAttribute="bottom" id="lh7-Oj-GKO"/>
                             <constraint firstItem="LeE-qH-jC3" firstAttribute="top" secondItem="eft-E9-VDb" secondAttribute="bottom" constant="30" id="pUh-Cx-n1d"/>
                             <constraint firstItem="Scy-zJ-hhz" firstAttribute="top" secondItem="rj9-3i-5lI" secondAttribute="bottom" constant="5" id="qXn-g5-Tio"/>
                             <constraint firstItem="cQ2-xj-0ys" firstAttribute="top" secondItem="JSc-Ox-2S2" secondAttribute="bottom" constant="10" id="rbD-Rv-Qvp"/>
@@ -340,14 +345,11 @@
                             <constraint firstItem="eft-E9-VDb" firstAttribute="top" secondItem="Isv-OF-sfX" secondAttribute="bottom" constant="20" id="wkm-9h-aAA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Part" id="mLf-Hd-smm">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="UJt-ke-xZW"/>
-                    </navigationItem>
                     <connections>
                         <outlet property="Stepper" destination="xhc-ih-2yS" id="EHL-xB-MxP"/>
                         <outlet property="count" destination="Scy-zJ-hhz" id="rbm-fn-9yZ"/>
+                        <outlet property="navBar" destination="stf-cS-CCT" id="SCZ-Jy-Fp5"/>
                         <outlet property="partHistoryTable" destination="Isv-OF-sfX" id="FWD-Pi-4EU"/>
-                        <outlet property="productName" destination="EHr-hg-aKr" id="F1N-S6-NZr"/>
                         <outlet property="room" destination="cQ2-xj-0ys" id="aXh-R2-LF6"/>
                         <outlet property="shelf" destination="EEV-NM-XGh" id="gio-o0-Ols"/>
                     </connections>

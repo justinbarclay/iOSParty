@@ -61,7 +61,11 @@ class ScannerController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
         }
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        qrCodeFrameView?.frame = CGRect.zero
+        captureSession?.startRunning()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -84,6 +88,7 @@ class ScannerController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
             qrCodeFrameView?.frame = barCodeObject!.bounds
             if metadataObj.stringValue != nil {
                 messageLabel.text = metadataObj.stringValue
+                captureSession?.stopRunning()
                 performSegue(withIdentifier: "segueToProductDetails" , sender: self)
             }
         }
