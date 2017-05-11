@@ -88,6 +88,7 @@ class ScannerController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
             qrCodeFrameView?.frame = barCodeObject!.bounds
             if metadataObj.stringValue != nil {
                 messageLabel.text = metadataObj.stringValue
+                productID = metadataObj.stringValue
                 captureSession?.stopRunning()
                 performSegue(withIdentifier: "segueToProductDetails" , sender: self)
             }
