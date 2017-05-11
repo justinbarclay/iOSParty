@@ -7,18 +7,26 @@
 //
 
 import UIKit
+import CoreGraphics
 
 class PartDetailController: UIViewController {
     var productID: String?
-    let dataSource: PartHistoryDataSource
+    var historyDataSource: PartHistoryDataSource
+    var unitDataSource: PartUnitDataSource
     var part: Part?
     var partsHistory: [PartHistory]
+    var partsUnits: [String]
     
     
     @IBOutlet weak var partHistoryTable: UITableView!
+    @IBOutlet weak var unitTable: UITableView!
+    
     @IBOutlet weak var shelf: UILabel!
     @IBOutlet weak var count: UITextField!
     @IBOutlet weak var navBar: UINavigationBar!
+    
+    @IBOutlet weak var unitTableHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
 
     @IBOutlet weak var room: UILabel!
@@ -26,7 +34,10 @@ class PartDetailController: UIViewController {
 
     required init?(coder aDecoder: NSCoder){
         partsHistory = []
-        self.dataSource = PartHistoryDataSource(partsHistory: partsHistory)
+        partsUnits = []
+        self.historyDataSource = PartHistoryDataSource(partsHistory: partsHistory)
+        self.unitDataSource = PartUnitDataSource(units: partsUnits)
+        
         super.init(coder: aDecoder)
     }
     
@@ -38,11 +49,18 @@ class PartDetailController: UIViewController {
             self.dismiss(animated: false, completion: nil)
             return
         }
-        partsHistory = part!.history
+        
+        self.historyDataSource = PartHistoryDataSource(partsHistory: part!.history)
+        self.unitDataSource = PartUnitDataSource(units: part!.units)
+        
         // Load up the historyTable
-        partHistoryTable.dataSource = dataSource
+        partHistoryTable.dataSource = historyDataSource
         partHistoryTable.reloadData()
-
+        
+        unitTable.dataSource = unitDataSource
+        unitTable.reloadData()
+        unitTableHeightConstraint.constant = CGFloat(part!.units.count) * 44
+        self.view.layoutIfNeeded()
         Stepper.maximumValue = 1000000000
         // Set up
         Stepper.value = Double(part!.count)
@@ -52,12 +70,11 @@ class PartDetailController: UIViewController {
         
         navBar.topItem?.title = part!.name
         navBar.backItem?.title = "Back"
-        
         // Do any additional setup after loading the view.
     }
     
     @IBAction func stepperDidChange(_ sender: UIStepper) {
-        count.text = String(part!.count)
+        count.text = String(Int(sender.value))
     }
     @IBAction func back(_ sender: UIBarButtonItem) {
         //performSegue(withIdentifier: "backToScanner", sender: self)

@@ -37,7 +37,8 @@ struct PartDataStore {
             PartHistory(user: "Justin", date: Date.init(), netChange: 20),
             PartHistory(user: "Justin", date: Date.init(), netChange: -5)
         ]
-        let part = Part(name: "Gasket", room: "Mechanical Storage Room", units: [], shelf: "A3", count: 20, history: history)
+        let units = ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Unit 6"]
+        let part = Part(name: "Gasket", room: "Mechanical Storage Room", units: units, shelf: "A3", count: 20, history: history)
         return part
     }
     
