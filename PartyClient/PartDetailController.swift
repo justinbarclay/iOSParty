@@ -43,12 +43,14 @@ class PartDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        PartDataStore.getPart(id: productID,callback: setPart)
         
-        part = PartDataStore.getPart(id: productID)
-        if(self.part == nil){
-            self.dismiss(animated: false, completion: nil)
-            return
-        }
+        navBar.backItem?.title = "Back"
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         self.historyDataSource = PartHistoryDataSource(partsHistory: part!.history)
         self.unitDataSource = PartUnitDataSource(units: part!.units)
@@ -69,8 +71,6 @@ class PartDetailController: UIViewController {
         count.text = String(part!.count)
         
         navBar.topItem?.title = part!.name
-        navBar.backItem?.title = "Back"
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func stepperDidChange(_ sender: UIStepper) {
@@ -85,7 +85,14 @@ class PartDetailController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    private func setPart(part: Part?) -> Void {
+        if let parts = part {
+            self.part = parts
+        }else{
+            self.dismiss(animated: false, completion: nil)
+            return
+        }
+    }
     /*
     // MARK: - Navigation
 
