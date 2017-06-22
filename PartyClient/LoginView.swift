@@ -18,9 +18,9 @@ class LoginController: UIViewController {
     @IBOutlet weak var _password: UITextField!
     @IBOutlet weak var _loginButton: UIButton!
     
-    let _testServer = "http://partyserver.192.168.0.14.xip.io/user_token"
+    let _testServer = "http://partyserver.192.168.0.11.xip.io/user_token"
 //    let _server = "http://partyserver.dev/user_token"
-    let _server = "http://localhost:3000/user_token"
+//    let _server = "http://localhost:3000/user_token"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class LoginController: UIViewController {
         let url = URL(string: _testServer)
         let username = _email.text
         let password = _password.text
-        
+        var login = false
         disableInput()
         
         // Dict for easy JSONilization
@@ -87,10 +87,12 @@ class LoginController: UIViewController {
             
             if let jsonResponse = token as? [String: Any] {
                 if let jwt = jsonResponse["jwt"] as? String {
-                    print(jwt)
                     self.saveInKeychain(token: jwt, account: username!)
+                    self.segueToScanner()
                 } else{
                     self.setAlert(title: "Server Error", body: "No response from server")
+                    login = false
+                    return
                 }
                 return
             }
@@ -111,6 +113,11 @@ class LoginController: UIViewController {
         }
     }
     
+    func segueToScanner(){
+        // Ensures everything is properly scoped
+        performSegue(withIdentifier: "loginToScanner" , sender: self)
+        return
+    }
     func disableInput(){
         _email.isEnabled = false
         _password.isEnabled = false
